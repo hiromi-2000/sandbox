@@ -1,6 +1,11 @@
 {
   "name": "sandbox",
   "version": "0.1.0",
+  "packageManager": "pnpm@10.10.0",
+  "engines": {
+    "node": "22.15.0",
+    "pnpm": "10.10.0"
+  },
   "private": true,
   "scripts": {
     "preinstall": "npx -y only-allow pnpm",
@@ -58,6 +63,8 @@
     "vitest": "^3.1.2"
   },
   "eslintConfig": {
-    "extends": ["plugin:storybook/recommended"]
+    "extends": [
+      "plugin:storybook/recommended"
+    ]
   }
 }

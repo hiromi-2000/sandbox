@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Next.jsプロジェクト
 
-## Getting Started
+このプロジェクトは[Next.js](https://nextjs.org)を使用し、[`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app)でブートストラップされています。
 
-First, run the development server:
+## 技術スタック
+
+- [Next.js 15](https://nextjs.org/) - Reactフレームワーク
+- [React 19](https://react.dev/) - UIライブラリ
+- [TypeScript](https://www.typescriptlang.org/) - 型付きJavaScript
+- [TanStack Query](https://tanstack.com/query/latest) - データフェッチングライブラリ
+- [Tailwind CSS](https://tailwindcss.com/) - CSSフレームワーク
+- [Biome](https://biomejs.dev/) - リンターとフォーマッター
+- [Vitest](https://vitest.dev/) - テストフレームワーク
+- [Storybook](https://storybook.js.org/) - UIコンポーネント開発ツール
+
+## 環境設定
+
+このプロジェクトはNode.js v22.15.0とpnpm v10.10.0を使用しています。
+
+### corepackの設定（推奨）
+
+corepackを使うと、プロジェクトごとに適切なパッケージマネージャのバージョンを自動的に使用できます：
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# corepackを有効化（Node.js 16.9.0以上が必要）
+corepack enable pnpm
+
+# または、npmスクリプトを使用
+pnpm setup:corepack
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 手動インストール
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+corepackを使用しない場合は、以下のコマンドでpnpmをインストールできます：
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install -g pnpm@10.10.0
+```
 
-## Learn More
+## 始め方
 
-To learn more about Next.js, take a look at the following resources:
+開発サーバーを起動するには:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+pnpm dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+ブラウザで[http://localhost:3000](http://localhost:3000)を開くと結果が表示されます。
 
-## Deploy on Vercel
+`app/page.tsx`を編集することでページの編集を始めることができます。ファイルを編集すると、ページは自動的に更新されます。
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+このプロジェクトでは[`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts)を使用して、Vercelの新しいフォントファミリーである[Geist](https://vercel.com/font)を自動的に最適化して読み込んでいます。

@@ -1,0 +1,25 @@
+# レフトフックの設定ファイル
+pre-commit:
+  parallel: true
+  commands:
+    corepack:
+      # gitフックが実行されたときにcorepackが有効化されるようにする
+      run: node -e "try{require('child_process').execSync('corepack enable pnpm')}catch(e){console.warn('corepackの有効化に失敗しました。Node.js 16.9.0以上が必要です。')}"
+
+post-checkout:
+  parallel: true
+  commands:
+    corepack:
+      run: node -e "try{require('child_process').execSync('corepack enable pnpm')}catch(e){console.warn('corepackの有効化に失敗しました。Node.js 16.9.0以上が必要です。')}"
+
+post-merge:
+  parallel: true
+  commands:
+    corepack:
+      run: node -e "try{require('child_process').execSync('corepack enable pnpm')}catch(e){console.warn('corepackの有効化に失敗しました。Node.js 16.9.0以上が必要です。')}"
+
+post-clone:
+  parallel: true
+  commands:
+    corepack:
+      run: node -e "try{require('child_process').execSync('corepack enable pnpm')}catch(e){console.warn('corepackの有効化に失敗しました。Node.js 16.9.0以上が必要です。')}" 
