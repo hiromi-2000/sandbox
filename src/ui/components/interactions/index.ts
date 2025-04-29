@@ -1,5 +1,3 @@
-import { Button } from "./Button";
-import { Input } from "./Input";
-import { Badge } from "./Badge";
-
-export { Button, Input, Badge };
+export { Button } from "./Button";
+export { Input } from "./Input";
+export { Badge } from "./Badge";
