@@ -1,82 +1,260 @@
-import Image from "next/image";
+"use client";
+
+// import Image from "next/image";
+import { Button, Input, Badge } from "../ui/components/interactions";
+import { Card } from "../ui/components/layouts/card";
+import { useState } from "react";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">Save and see your changes instantly.</li>
-        </ol>
+  const [email, setEmail] = useState("");
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="min-h-screen bg-base">
+      {/* ヘッダー */}
+      <header className="sticky top-0 z-10 bg-base-50 border-b border-color shadow-sm">
+        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+          <div className="flex items-center space-x-2">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+              <span className="text-white font-bold">T</span>
+            </div>
+            <h1 className="text-xl font-bold text-text">Time</h1>
+          </div>
+          <div className="flex items-center space-x-4">
+            <Button variant="secondary" size="sm">
+              ログイン
+            </Button>
+            <Button size="sm">新規登録</Button>
+          </div>
         </div>
+      </header>
+
+      {/* メインコンテンツ */}
+      <main className="container mx-auto px-4 py-12">
+        {/* ヒーローセクション */}
+        <section className="mb-20">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-12">
+            <div className="md:w-1/2 space-y-6">
+              <h2 className="text-4xl md:text-5xl font-bold text-text">
+                シンプルで使いやすい
+                <br />
+                <span className="text-primary">タスク管理ツール</span>
+              </h2>
+              <p className="text-text-light text-lg">
+                Timeは、日々のタスク管理をサポートする直感的なツールです。
+                シンプルな操作でスケジュール管理が簡単になります。
+              </p>
+              <div className="pt-4 flex flex-col sm:flex-row gap-4">
+                <Input
+                  placeholder="メールアドレスを入力"
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  fullWidth
+                />
+                <Button fullWidth>無料で始める</Button>
+              </div>
+            </div>
+            <div className="md:w-1/2">
+              <div className="bg-base-100 rounded-xl p-6 shadow-lg border border-color">
+                <div className="aspect-video w-full bg-base-50 rounded-lg flex items-center justify-center">
+                  <p className="text-text-light">アプリのスクリーンショット</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 特徴セクション */}
+        <section className="mb-20">
+          <h3 className="text-2xl font-bold text-text mb-8 text-center">
+            主な特徴
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "シンプルな操作性",
+                description:
+                  "直感的なインターフェースで、すぐに使い始めることができます。",
+              },
+              {
+                title: "カスタマイズ可能",
+                description:
+                  "自分好みのワークフローを作成し、効率的に作業を進めましょう。",
+              },
+              {
+                title: "どこでも使える",
+                description:
+                  "スマートフォンでもPCでも、いつでもどこでもタスクを管理できます。",
+              },
+            ].map((feature, index) => (
+              <Card
+                key={index}
+                className="p-6 bg-base-50 hover:shadow-md transition-shadow"
+              >
+                <div className="w-12 h-12 rounded-lg bg-primary-100 flex items-center justify-center mb-4">
+                  <span className="text-primary-700 font-bold">
+                    {index + 1}
+                  </span>
+                </div>
+                <h4 className="text-xl font-semibold text-text mb-2">
+                  {feature.title}
+                </h4>
+                <p className="text-text-light">{feature.description}</p>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* プラン紹介セクション */}
+        <section className="mb-20">
+          <h3 className="text-2xl font-bold text-text mb-8 text-center">
+            料金プラン
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "無料プラン",
+                price: "¥0",
+                features: [
+                  "基本機能の利用",
+                  "最大3つのプロジェクト",
+                  "1週間の履歴保存",
+                ],
+                buttonText: "始める",
+                popular: false,
+              },
+              {
+                name: "スタンダード",
+                price: "¥980",
+                period: "/月",
+                features: [
+                  "無制限のプロジェクト",
+                  "チーム共有機能",
+                  "無制限の履歴保存",
+                  "優先サポート",
+                ],
+                buttonText: "14日間無料トライアル",
+                popular: true,
+              },
+              {
+                name: "プロフェッショナル",
+                price: "¥2,980",
+                period: "/月",
+                features: [
+                  "すべての機能",
+                  "高度な分析ツール",
+                  "API連携",
+                  "24時間サポート",
+                ],
+                buttonText: "詳細を見る",
+                popular: false,
+              },
+            ].map((plan, index) => (
+              <Card
+                key={index}
+                className={`p-6 relative ${plan.popular ? "border-primary shadow-lg" : "bg-base-50"}`}
+              >
+                {plan.popular && (
+                  <Badge variant="primary" className="absolute top-3 right-3">
+                    人気
+                  </Badge>
+                )}
+                <h4 className="text-xl font-semibold text-text mb-2">
+                  {plan.name}
+                </h4>
+                <div className="mb-4">
+                  <span className="text-3xl font-bold text-text">
+                    {plan.price}
+                  </span>
+                  {plan.period && (
+                    <span className="text-text-light">{plan.period}</span>
+                  )}
+                </div>
+                <ul className="mb-6 space-y-2">
+                  {plan.features.map((feature, i) => (
+                    <li key={i} className="flex items-center text-text-light">
+                      <span className="mr-2 text-primary">✓</span>
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+                <Button
+                  variant={plan.popular ? "primary" : "secondary"}
+                  fullWidth
+                >
+                  {plan.buttonText}
+                </Button>
+              </Card>
+            ))}
+          </div>
+        </section>
+
+        {/* お問い合わせセクション */}
+        <section className="bg-base-100 rounded-xl p-8 border border-color">
+          <div className="text-center max-w-2xl mx-auto">
+            <h3 className="text-2xl font-bold text-text mb-4">
+              お気軽にお問い合わせください
+            </h3>
+            <p className="text-text-light mb-6">
+              ご質問や機能リクエストなど、お気軽にご連絡ください。
+              チームがサポートいたします。
+            </p>
+            <Button variant="accent">お問い合わせ</Button>
+          </div>
+        </section>
       </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/file.svg" alt="File icon" width={16} height={16} />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/window.svg" alt="Window icon" width={16} height={16} />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image aria-hidden src="/globe.svg" alt="Globe icon" width={16} height={16} />
-          Go to nextjs.org →
-        </a>
+
+      {/* フッター */}
+      <footer className="bg-base-100 border-t border-color mt-20">
+        <div className="container mx-auto px-4 py-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center">
+                  <span className="text-white font-bold">T</span>
+                </div>
+                <h1 className="text-xl font-bold text-text">Time</h1>
+              </div>
+              <p className="text-text-light">
+                シンプルで使いやすいタスク管理ツール
+              </p>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-text mb-4">製品</h4>
+              <ul className="space-y-2 text-text-light">
+                <li>機能</li>
+                <li>料金プラン</li>
+                <li>ロードマップ</li>
+                <li>リリースノート</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-text mb-4">サポート</h4>
+              <ul className="space-y-2 text-text-light">
+                <li>ヘルプセンター</li>
+                <li>ガイド</li>
+                <li>APIドキュメント</li>
+                <li>コミュニティ</li>
+              </ul>
+            </div>
+
+            <div>
+              <h4 className="font-semibold text-text mb-4">会社情報</h4>
+              <ul className="space-y-2 text-text-light">
+                <li>会社概要</li>
+                <li>ブログ</li>
+                <li>採用情報</li>
+                <li>プライバシーポリシー</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="border-t border-color mt-12 pt-6 text-text-light text-center">
+            <p>© 2023 Time. All rights reserved.</p>
+          </div>
+        </div>
       </footer>
     </div>
   );

@@ -1,12 +1,6 @@
 const config = {
   plugins: {
-    "@tailwindcss/postcss": {
-      config: {
-        future: {
-          hoverOnlyWhenSupported: true,
-        },
-      },
-    },
+    "@tailwindcss/postcss": {},
   },
 };
 

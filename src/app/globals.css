@@ -1,54 +1,217 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* 基本カラー - ライトモード */
+  --base: #ffffff;
+  --base-50: #fafafa;
+  --base-100: #f5f5f5;
+  --base-200: #e5e5e5;
+  --base-300: #d4d4d4;
+  
+  --primary: #3CB99F; /* ティールグリーン（画像から抽出） */
+  --primary-50: #ecfdf5;
+  --primary-100: #d1fae5;
+  --primary-200: #a7f3d0;
+  --primary-300: #6ee7b7;
+  --primary-400: #34d399;
+  --primary-500: #3CB99F;
+  --primary-600: #059669;
+  --primary-700: #047857;
+  
+  --accent: #F9C846; /* 補色として黄色系 */
+  --accent-50: #fefce8;
+  --accent-100: #fef9c3;
+  --accent-200: #fef08a;
+  --accent-300: #fde047;
+  --accent-400: #facc15;
+  --accent-500: #F9C846;
+  --accent-600: #ca8a04;
+  --accent-700: #a16207;
+  
+  --text: #171717;
+  --text-light: #525252;
+  --text-lighter: #737373;
+  
+  /* UI要素 */
+  --border: #e5e5e5;
+  --border-focus: #6ee7b7;
+  --shadow: rgba(0, 0, 0, 0.1);
+  --shadow-strong: rgba(0, 0, 0, 0.2);
+  
+  /* フィードバックカラー */
+  --success: #10b981;
+  --error: #ef4444;
+  --warning: #f59e0b;
+  --info: #3b82f6;
+}
+
+/* ダークモードの変数定義 */
+@theme dark {
+  --base: #0a0a0a;
+  --base-50: #111111;
+  --base-100: #1a1a1a;
+  --base-200: #2a2a2a;
+  --base-300: #404040;
+  
+  --primary: #2a9d8f;
+  --primary-50: #042f2e;
+  --primary-100: #064e3b;
+  --primary-200: #065f46;
+  --primary-300: #047857;
+  --primary-400: #0d9488;
+  --primary-500: #2a9d8f;
+  --primary-600: #34d399;
+  --primary-700: #6ee7b7;
+  
+  --accent: #b45309;
+  --accent-50: #422006;
+  --accent-100: #713f12;
+  --accent-200: #854d0e;
+  --accent-300: #a16207;
+  --accent-400: #b45309;
+  --accent-500: #d97706;
+  --accent-600: #f59e0b;
+  --accent-700: #fbbf24;
+  
+  --text: #e5e5e5;
+  --text-light: #a3a3a3;
+  --text-lighter: #737373;
+  
+  --border: #2a2a2a;
+  --border-focus: #047857;
+  --shadow: rgba(0, 0, 0, 0.5);
+  --shadow-strong: rgba(0, 0, 0, 0.7);
+  
+  --success: #059669;
+  --error: #b91c1c;
+  --warning: #b45309;
+  --info: #1d4ed8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: --value(--base);
+  --color-foreground: --value(--text);
+  --font-sans: --value(--font-geist-sans);
+  --font-mono: --value(--font-geist-mono);
 }
 
-/* Tailwind CSS v4.1 variants */
-@variant dark (&:is(.dark *));
-@variant hover-only (&:hover) {
+@custom-variant hover-only {
   @media (hover: hover) {
     &:hover {
       @apply;
     }
   }
-};
-
-/* カスタムユーティリティ */
-@utility btn-primary {
-  @apply rounded-md bg-blue-500 px-4 py-2 text-white pointer-coarse:px-6 pointer-coarse:py-3;
-  @apply hover-only:bg-blue-600 text-shadow-sm;
-  @apply transition-colors duration-200;
 }
 
-@utility btn-secondary {
-  @apply rounded-md bg-gray-200 px-4 py-2 text-gray-800 pointer-coarse:px-6 pointer-coarse:py-3;
-  @apply hover-only:bg-gray-300 dark:bg-gray-700 dark:text-white;
-  @apply transition-colors duration-200;
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant light (&:where(.light, .light *));
+
+/* 背景色ユーティリティ */
+@utility bg-base {
+  background-color: --value(--base);
 }
 
-@utility card {
-  @apply rounded-lg bg-white p-6 shadow-md dark:bg-gray-800;
-  @apply wrap-anywhere;
+@utility bg-base-* {
+  background-color: --value(--base-*);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@utility bg-primary {
+  background-color: --value(--primary);
+}
+
+@utility bg-primary-* {
+  background-color: --value(--primary-*);
+}
+
+@utility bg-accent {
+  background-color: --value(--accent);
+}
+
+@utility bg-accent-* {
+  background-color: --value(--accent-*);
+}
+
+/* テキスト色ユーティリティ */
+@utility text-base {
+  color: --value(--base);
+}
+
+@utility text-base-* {
+  color: --value(--base-*);
+}
+
+@utility text-text {
+  color: --value(--text);
+}
+
+@utility text-text-* {
+  color: --value(--text-*);
+}
+
+@utility text-primary {
+  color: --value(--primary);
+}
+
+@utility text-primary-* {
+  color: --value(--primary-*);
+}
+
+@utility text-accent {
+  color: --value(--accent);
+}
+
+@utility text-accent-* {
+  color: --value(--accent-*);
+}
+
+/* ボーダー色ユーティリティ */
+@utility border-base {
+  border-color: --value(--base);
+}
+
+@utility border-base-* {
+  border-color: --value(--base-*);
+}
+
+@utility border-primary {
+  border-color: --value(--primary);
+}
+
+@utility border-primary-* {
+  border-color: --value(--primary-*);
+}
+
+@utility border-accent {
+  border-color: --value(--accent);
+}
+
+@utility border-accent-* {
+  border-color: --value(--accent-*);
+}
+
+@utility border-color {
+  border-color: --value(--border);
+}
+
+/* リングカラーユーティリティ */
+@utility ring-primary {
+  --tw-ring-color: --value(--primary);
+}
+
+@utility ring-primary-* {
+  --tw-ring-color: --value(--primary-*);
+}
+
+@utility ring-accent {
+  --tw-ring-color: --value(--accent);
+}
+
+@utility ring-accent-* {
+  --tw-ring-color: --value(--accent-*);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: --value(--base);
+  color: --value(--text);
+  font-family: --value(--font-sans, Arial, Helvetica, sans-serif);
 }
