@@ -1,11 +1,14 @@
-import { resolve } from "node:path";
+import path, { resolve } from "node:path";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vitest/config";
 
 import { storybookTest } from "@storybook/experimental-addon-test/vitest-plugin";
+import { fileURLToPath } from "node:url";
 
 const dirname =
-  typeof __dirname !== "undefined" ? __dirname : path.dirname(fileURLToPath(import.meta.url));
+  typeof __dirname !== "undefined"
+    ? __dirname
+    : path.dirname(fileURLToPath(import.meta.url));
 
 // More info at: https://storybook.js.org/docs/writing-tests/test-addon
 export default defineConfig({
