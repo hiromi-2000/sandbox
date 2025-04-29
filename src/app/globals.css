@@ -12,6 +12,34 @@
   --font-mono: var(--font-geist-mono);
 }
 
+/* Tailwind CSS v4.1 variants */
+@variant dark (&:is(.dark *));
+@variant hover-only (&:hover) {
+  @media (hover: hover) {
+    &:hover {
+      @apply;
+    }
+  }
+};
+
+/* カスタムユーティリティ */
+@utility btn-primary {
+  @apply rounded-md bg-blue-500 px-4 py-2 text-white pointer-coarse:px-6 pointer-coarse:py-3;
+  @apply hover-only:bg-blue-600 text-shadow-sm;
+  @apply transition-colors duration-200;
+}
+
+@utility btn-secondary {
+  @apply rounded-md bg-gray-200 px-4 py-2 text-gray-800 pointer-coarse:px-6 pointer-coarse:py-3;
+  @apply hover-only:bg-gray-300 dark:bg-gray-700 dark:text-white;
+  @apply transition-colors duration-200;
+}
+
+@utility card {
+  @apply rounded-lg bg-white p-6 shadow-md dark:bg-gray-800;
+  @apply wrap-anywhere;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
