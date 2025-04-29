@@ -1,8 +1,10 @@
 "use client";
 
 // import Image from "next/image";
-import { Button, Input, Badge } from "../ui/components/interactions";
-import { Card } from "../ui/components/layouts/card";
+import { Button } from "@/ui/components/interactions/Button";
+import { Input } from "@/ui/components/interactions/Input";
+import { Badge } from "@/ui/components/interactions/Badge";
+import { Card } from "@/ui/components/layouts/card";
 import { useState } from "react";
 
 export default function Home() {

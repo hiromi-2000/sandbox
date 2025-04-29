@@ -1,0 +1,99 @@
+import { Meta, Controls, Story } from "@storybook/blocks";
+import * as BadgeStories from "./Badge.stories";
+
+<Meta of={BadgeStories} />
+
+# バッジコンポーネント
+
+バッジコンポーネントは、ステータスや情報を表示するために使用されます。
+
+## 特徴
+
+- 7つのバリアント（primary, accent, neutral, success, warning, error, info）
+- 3つのサイズ（sm, md, lg）
+- 角丸のカスタマイズ
+
+## インポート方法
+
+```tsx
+import { Badge } from "@/ui/components/interactions";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+// デフォルトのバッジ (primary)
+<Badge>新機能</Badge>
+
+// バリアント
+<Badge variant="primary">プライマリ</Badge>
+<Badge variant="accent">アクセント</Badge>
+<Badge variant="neutral">中立</Badge>
+<Badge variant="success">成功</Badge>
+<Badge variant="warning">警告</Badge>
+<Badge variant="error">エラー</Badge>
+<Badge variant="info">情報</Badge>
+```
+
+### サイズバリエーション
+
+```tsx
+<Badge size="sm">小</Badge>
+<Badge size="md">中</Badge>
+<Badge size="lg">大</Badge>
+```
+
+### 角丸のカスタマイズ
+
+```tsx
+<Badge rounded="full">丸型</Badge>
+<Badge rounded="md">角丸</Badge>
+```
+
+## コンポーネントのAPI
+
+<Controls />
+
+## サンプル
+
+### プライマリバッジ
+
+<Story of={BadgeStories.Primary} />
+
+### アクセントバッジ
+
+<Story of={BadgeStories.Accent} />
+
+### ニュートラルバッジ
+
+<Story of={BadgeStories.Neutral} />
+
+### 成功バッジ
+
+<Story of={BadgeStories.Success} />
+
+### 警告バッジ
+
+<Story of={BadgeStories.Warning} />
+
+### エラーバッジ
+
+<Story of={BadgeStories.Error} />
+
+### 情報バッジ
+
+<Story of={BadgeStories.Info} />
+
+### サイズバリエーション
+
+<Story of={BadgeStories.Sizes} />
+
+### 角丸バリエーション
+
+<Story of={BadgeStories.Rounded} />
+
+### 全バリアント
+
+<Story of={BadgeStories.AllVariants} />

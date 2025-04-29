@@ -1,0 +1,94 @@
+import { Meta, Controls, Story } from "@storybook/blocks";
+import * as InputStories from "./Input.stories";
+
+<Meta of={InputStories} />
+
+# 入力コンポーネント
+
+入力コンポーネントは、ユーザーからのテキスト入力を受け付けます。
+
+## 特徴
+
+- 複数のサイズ（sm, md, lg）
+- 状態表示（デフォルト、有効、無効、エラー）
+- ラベルとエラーメッセージのサポート
+- フルワイド表示オプション
+
+## インポート方法
+
+```tsx
+import { Input } from "@/ui/components/interactions";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+// シンプルな入力フィールド
+<Input placeholder="テキストを入力" />
+
+// ラベル付き入力フィールド
+<Input label="ユーザー名" placeholder="ユーザー名を入力" />
+
+// エラーメッセージ付き
+<Input
+  label="パスワード"
+  type="password"
+  state="invalid"
+  error="8文字以上入力してください"
+/>
+```
+
+### サイズバリエーション
+
+```tsx
+<Input size="sm" placeholder="小サイズ" />
+<Input size="md" placeholder="中サイズ" />
+<Input size="lg" placeholder="大サイズ" />
+```
+
+### 状態バリエーション
+
+```tsx
+<Input state="default" placeholder="デフォルト状態" />
+<Input state="valid" placeholder="有効な入力" />
+<Input state="invalid" placeholder="無効な入力" error="エラーメッセージ" />
+<Input state="disabled" placeholder="無効状態" disabled />
+```
+
+### フルワイド入力フィールド
+
+```tsx
+<Input fullWidth placeholder="幅いっぱいの入力欄" />
+```
+
+## コンポーネントのAPI
+
+<Controls />
+
+## サンプル
+
+### デフォルト
+
+<Story of={InputStories.Default} />
+
+### ラベル付き
+
+<Story of={InputStories.WithLabel} />
+
+### エラーメッセージ付き
+
+<Story of={InputStories.WithError} />
+
+### サイズバリエーション
+
+<Story of={InputStories.Sizes} />
+
+### 状態バリエーション
+
+<Story of={InputStories.States} />
+
+### フルワイド表示
+
+<Story of={InputStories.FullWidth} />

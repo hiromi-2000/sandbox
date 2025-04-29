@@ -1,0 +1,126 @@
+import { Meta, Controls, Story } from "@storybook/blocks";
+import * as ButtonStories from "./Button.stories";
+
+<Meta of={ButtonStories} />
+
+# ボタンコンポーネント
+
+ボタンコンポーネントは、アクションのトリガーに使用されます。
+
+## 特徴
+
+- 複数のバリアント（primary, secondary, accent, outline, ghost, link）
+- 5つのサイズ（xs, sm, md, lg, xl）
+- 角丸のカスタマイズ
+- アイコンのみのボタンサポート
+- フルワイド表示オプション
+
+## インポート方法
+
+```tsx
+import { Button } from "@/ui/components/interactions";
+```
+
+## 使用例
+
+### 基本的な使い方
+
+```tsx
+// デフォルトのボタン (primary, md)
+<Button>クリック</Button>
+
+// セカンダリボタン
+<Button variant="secondary">セカンダリ</Button>
+
+// アクセントボタン
+<Button variant="accent">アクセント</Button>
+
+// アウトラインボタン
+<Button variant="outline">アウトライン</Button>
+
+// 透明なボタン
+<Button variant="ghost">ゴースト</Button>
+
+// リンクスタイルのボタン
+<Button variant="link">リンク</Button>
+```
+
+### サイズバリエーション
+
+```tsx
+<Button size="xs">極小</Button>
+<Button size="sm">小</Button>
+<Button size="md">中</Button>
+<Button size="lg">大</Button>
+<Button size="xl">特大</Button>
+```
+
+### アイコンのみのボタン
+
+```tsx
+<Button iconOnly size="md">
+  <IconComponent />
+</Button>
+```
+
+### フルワイドボタン
+
+```tsx
+<Button fullWidth>幅いっぱいのボタン</Button>
+```
+
+### 角丸のカスタマイズ
+
+```tsx
+<Button rounded="none">角なし</Button>
+<Button rounded="sm">小さい角丸</Button>
+<Button rounded="md">標準の角丸</Button>
+<Button rounded="lg">大きい角丸</Button>
+<Button rounded="full">完全な丸み</Button>
+```
+
+## コンポーネントのAPI
+
+<Controls />
+
+## サンプル
+
+### プライマリボタン
+
+<Story of={ButtonStories.Primary} />
+
+### セカンダリボタン
+
+<Story of={ButtonStories.Secondary} />
+
+### アクセントボタン
+
+<Story of={ButtonStories.Accent} />
+
+### アウトラインボタン
+
+<Story of={ButtonStories.Outline} />
+
+### ゴーストボタン
+
+<Story of={ButtonStories.Ghost} />
+
+### リンクボタン
+
+<Story of={ButtonStories.Link} />
+
+### サイズバリエーション
+
+<Story of={ButtonStories.Sizes} />
+
+### 角丸バリエーション
+
+<Story of={ButtonStories.Rounded} />
+
+### アイコンのみのボタン
+
+<Story of={ButtonStories.IconOnly} />
+
+### 無効状態のボタン
+
+<Story of={ButtonStories.Disabled} />
